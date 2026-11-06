@@ -63,10 +63,6 @@ app.get("/janken", (req, res) => {
   res.render( 'janken', display );
 });
 
-app.get("/janken", (req, res) => {
-
-});
-
 let station = [
   { id:1, code:"JE01", name:"東京駅"},
   { id:2, code:"JE07", name:"舞浜駅"},
@@ -79,7 +75,22 @@ let station = [
 
 app.get("/keiyo", (req, res) => {
   // 本来ならここにDBとのやり取りが入る
-  res.render('db1', { data: station });
+res.redirect('/public/keiyo_add.html');
 });
+
+
+
+app.get("/keiyo_add", (req, res) => {
+  let id = req.query.id;
+  let code = req.query.code;
+  let name = req.query.name;
+
+  let newdata = { id: id, code: code, name: name };
+  station.push(newdata);
+
+  res.redirect('/public/keiyo_add.html');
+});
+
+
 
 app.listen(8080, () => console.log("Example app listening on port 8080!"));
