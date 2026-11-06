@@ -92,5 +92,16 @@ app.get("/keiyo_add", (req, res) => {
 });
 
 
+let games = [
+  { id: 1, name: "Minecraft", genre: "サンドボックス", platform: "PC" },
+  { id: 2, name: "VALORANT", genre: "FPS", platform: "PC" },
+  { id: 3, name: "Apex Legends", genre: "FPS", platform: "PS5 / PC" },
+  { id: 4, name: "Fortnite", genre: "バトルロイヤル", platform: "PS5 / PC" }
+];
+
+app.get("/game", (req, res) => {
+  res.render("game", { data: games });
+});
+
 
 app.listen(8080, () => console.log("Example app listening on port 8080!"));
